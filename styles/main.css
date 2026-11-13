@@ -1463,9 +1463,14 @@ body {
 .cv-name-row {
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
+  align-items: flex-start;
   flex-wrap: wrap;
-  gap: 16px;
+  gap: 16px 24px;
+}
+
+.cv-name-row > div:first-child {
+  flex: 1 1 320px;
+  min-width: 0;
 }
 
 .cv-name {
@@ -1480,6 +1485,7 @@ body {
   font-family: var(--font-mono);
   font-size: 0.8rem;
   letter-spacing: 0.06em;
+  line-height: 1.5;
   text-transform: uppercase;
   color: var(--accent-orange);
   margin-top: 6px;
@@ -1491,6 +1497,7 @@ body {
   color: var(--text-secondary);
   text-align: right;
   line-height: 1.85;
+  margin-left: auto;
 }
 
 .cv-contact a {

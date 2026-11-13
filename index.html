@@ -163,19 +163,47 @@
           </p>
 
           <div class="problem-form-wrap">
-            <div class="hero-contact-row">
+            <form id="problem-form" class="problem-bar" autocomplete="off">
+              <div class="problem-inputs-group">
+                <div class="problem-field-email">
+                  <input
+                    type="email"
+                    id="problem-email"
+                    name="email"
+                    class="problem-input"
+                    placeholder="Your email (required)..."
+                    aria-label="Your email address"
+                    required
+                  />
+                </div>
+                <div class="problem-field-note">
+                  <input
+                    type="text"
+                    id="problem-input"
+                    name="message"
+                    class="problem-input"
+                    placeholder="Describe a system or workflow bottleneck..."
+                    aria-label="Describe a system or workflow bottleneck"
+                    required
+                  />
+                </div>
+              </div>
+              <button type="submit" class="problem-send-btn" id="problem-submit-btn">Send Note</button>
+            </form>
+            <div id="problem-form-feedback" class="problem-form-feedback" aria-live="polite"></div>
+            <div class="hero-quick-meta">
+              <span>Muscat, Oman · Eligible for NL Orientation Year (zoekjaar)</span>
+              <span>·</span>
               <a
                 href="mailto:en.mirror@gmail.com?subject=Inquiry%20%E2%80%94%20Ehsan%20Negahdar"
-                class="problem-send-btn hero-email-btn"
+                class="copy-email-btn"
               >
                 ✉ Email me
               </a>
-              <button type="button" class="stage-step-btn" data-copy-email>
-                Copy email (en.mirror@gmail.com)
+              <span>·</span>
+              <button type="button" class="copy-email-btn" data-copy-email>
+                en.mirror@gmail.com (Copy)
               </button>
-            </div>
-            <div class="hero-quick-meta">
-              <span>Muscat, Oman</span>
               <span>·</span>
               <a
                 href="https://www.linkedin.com/in/ehsan-negahdar/"

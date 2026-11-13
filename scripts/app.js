@@ -360,6 +360,125 @@
     renderHomeProjects('all');
   }
 
+  const problemForm = document.getElementById('problem-form');
+  const problemEmail = document.getElementById('problem-email');
+  const problemInput = document.getElementById('problem-input');
+  const problemFeedback = document.getElementById('problem-form-feedback');
+
+  if (problemForm && problemInput) {
+    problemForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = problemEmail ? problemEmail.value.trim() : '';
+      const note = problemInput.value.trim();
+
+      if (problemEmail && !email) {
+        problemEmail.focus();
+        showToast('Please provide your email address so I can respond.');
+        return;
+      }
+
+      if (!note) {
+        problemInput.focus();
+        showToast('Please describe your system, data, or workflow problem.');
+        return;
+      }
+
+      const submitBtn = problemForm.querySelector('button[type="submit"]');
+      const originalBtnText = submitBtn ? submitBtn.textContent : 'Send Note';
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending...';
+      }
+
+      if (problemFeedback) {
+        problemFeedback.innerHTML = '';
+      }
+
+      const endpoint =
+        data.meta.formEndpoint || `https://formsubmit.co/ajax/${data.meta.directEmail}`;
+
+      try {
+        const payload = {
+          _subject: 'Portfolio Direct Inquiry — Ehsan Negahdar',
+          email: email,
+          _replyto: email,
+          message: note,
+          source: window.location.href,
+          timestamp: new Date().toISOString(),
+        };
+
+        const res = await fetch(endpoint, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json',
+          },
+          body: JSON.stringify(payload),
+        });
+
+        if (res.ok) {
+          showToast(`✓ Note sent successfully to ${data.meta.directEmail}!`);
+          if (problemFeedback) {
+            problemFeedback.innerHTML = `<span class="feedback-success">✓ Thank you! Your note has been dispatched. I will reply to ${escapeHtml(email)} soon.</span>`;
+          }
+          if (problemEmail) problemEmail.value = '';
+          problemInput.value = '';
+        } else {
+          throw new Error('Endpoint returned HTTP ' + res.status);
+        }
+      } catch (err) {
+        // NON-DESTRUCTIVE RECOVERY (UX-02): Keep user's input intact
+        showToast('Unable to send automatically. Note preserved below.');
+        if (problemFeedback) {
+          const subject = encodeURIComponent('Problem Inquiry — Direct Note');
+          const mailBody = encodeURIComponent(
+            `Hi Ehsan,\n\nFrom: ${email}\nProblem description:\n"${note}"\n\nBest regards,`
+          );
+          const mailtoUrl = `mailto:${data.meta.directEmail}?subject=${subject}&body=${mailBody}`;
+
+          problemFeedback.innerHTML = `
+            <div class="feedback-fallback-banner">
+              <p class="feedback-text warning">⚠ Direct dispatch service unavailable. Your note has been preserved.</p>
+              <div class="feedback-actions">
+                <button type="button" class="feedback-btn action-copy" id="feedback-copy-btn">📋 Copy Note</button>
+                <a href="${mailtoUrl}" class="feedback-btn action-email" target="_blank" rel="noopener noreferrer">✉ Open in Email Client</a>
+                <button type="button" class="feedback-btn action-retry" id="feedback-retry-btn">↻ Retry</button>
+              </div>
+            </div>
+          `;
+
+          const copyBtn = document.getElementById('feedback-copy-btn');
+          if (copyBtn) {
+            copyBtn.addEventListener('click', async () => {
+              const fullNote = `Contact: ${email}\nProblem: ${note}`;
+              try {
+                if (!navigator.clipboard) throw new Error('No clipboard API');
+                await navigator.clipboard.writeText(fullNote);
+                copyBtn.textContent = '✓ Copied!';
+                showToast('✓ Note & contact details copied to clipboard.');
+              } catch (clipErr) {
+                copyBtn.textContent = 'Select text manually';
+                showToast('Clipboard access unavailable. Please select your text manually.');
+              }
+            });
+          }
+
+          const retryBtn = document.getElementById('feedback-retry-btn');
+          if (retryBtn) {
+            retryBtn.addEventListener('click', () => {
+              problemForm.requestSubmit();
+            });
+          }
+        }
+      } finally {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = originalBtnText;
+        }
+      }
+    });
+  }
+
   /* --------------------------------------------------------------------------
    * 5. DEDICATED PROJECTS PAGE RENDERER (projects.html)
    * -------------------------------------------------------------------------- */

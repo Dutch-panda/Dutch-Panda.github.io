@@ -11,10 +11,10 @@ window.PORTFOLIO_DATA = {
     subheadline:
       "I turn business needs into practical systems and processes, using AI where it fits.",
     availability: "Available",
-    availabilityDetail: "Muscat, Oman · Business Analysis, Systems Design & AI Workflows",
+    availabilityDetail: "Muscat, Oman · Eligible for NL Orientation Year (zoekjaar)",
     directEmail: "en.mirror@gmail.com",
-    phone: "+31 68 494 2790",
-    location: "Muscat, Oman",
+    phone: "+968 9932 3153",
+    location: "Muscat, Oman · Eligible for NL Orientation Year (zoekjaar)",
     githubUrl: "https://github.com/Dutch-panda",
     linkedinUrl: "https://www.linkedin.com/in/ehsan-negahdar/",
   },
@@ -148,7 +148,7 @@ window.PORTFOLIO_DATA = {
     title: "AI Solution Designer · Business Analysis, Systems Design & Process Optimization",
     location: "Muscat, Oman · Eligible for Dutch Orientation Year (zoekjaar)",
     email: "en.mirror@gmail.com",
-    phone: "+31 68 494 2790",
+    phone: "+968 9932 3153",
     linkedin: "https://www.linkedin.com/in/ehsan-negahdar/",
     github: "https://github.com/Dutch-panda",
     summary:
