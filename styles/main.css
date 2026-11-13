@@ -2889,7 +2889,54 @@ ol.sources-list li:target {
   }
 
   .subpage-main {
-    padding: calc(var(--header-h) + 20px) 16px calc(var(--footer-h) + 40px) 16px;
+    padding: calc(var(--header-h) + 20px) 16px 40px 16px;
+  }
+
+  .stage-viewport {
+    padding-bottom: 32px;
+  }
+
+  .site-footer {
+    position: relative;
+    bottom: auto;
+    left: auto;
+    right: auto;
+    z-index: 10;
+    height: auto;
+    min-height: var(--footer-h);
+    padding: 14px 16px;
+  }
+
+  .footer-inner {
+    flex-direction: column;
+    height: auto;
+    padding: 0;
+    gap: 8px;
+    text-align: center;
+  }
+
+  .footer-left,
+  .footer-right {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 6px 10px;
+  }
+
+  .footer-owner-credit,
+  .footer-label,
+  .footer-dispatch-btn {
+    white-space: normal;
+    text-align: center;
+  }
+
+  .footer-sep {
+    display: none;
+  }
+
+  .toast-banner {
+    bottom: 20px;
+    max-width: calc(100vw - 32px);
+    text-align: center;
   }
 
   .archive-filters {
@@ -3050,26 +3097,6 @@ ol.sources-list li:target {
   .stage-nav-footer .stage-step-btn {
     width: 100%;
     text-align: center;
-  }
-
-  .site-footer {
-    height: auto;
-    min-height: var(--footer-h);
-    padding: 10px 0;
-  }
-
-  .footer-inner {
-    flex-direction: column;
-    height: auto;
-    padding: 0 16px;
-    gap: 8px;
-    text-align: center;
-  }
-
-  .footer-left,
-  .footer-right {
-    justify-content: center;
-    flex-wrap: wrap;
   }
 
   .blog-meta-actions {
