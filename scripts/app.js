@@ -770,6 +770,32 @@
         </aside>
 
         <div class="cv-main" id="cv-experience">
+          ${
+            cv.selectedProjects && cv.selectedProjects.length
+              ? `
+          <h2 class="cv-section-h2">Selected Projects</h2>
+          ${cv.selectedProjects
+            .map(
+              (proj) => `
+            <div class="cv-exp-entry" id="${proj.id}">
+              <div class="cv-exp-head">
+                <div class="cv-exp-role">
+                  ${proj.role} · <span class="org">${proj.org}</span>
+                  ${proj.current ? '<span class="cv-current-tag">Showcase</span>' : ''}
+                </div>
+                <div class="cv-exp-dates">${proj.dates}</div>
+              </div>
+              <div class="cv-exp-meta">${proj.meta}</div>
+              <ul class="cv-bullets">
+                ${proj.bullets.map((b) => `<li>${b}</li>`).join('')}
+              </ul>
+            </div>
+          `
+            )
+            .join('')}
+          `
+              : ''
+          }
           <h2 class="cv-section-h2">Experience</h2>
           ${cv.experience
             .map(

@@ -63,6 +63,36 @@ window.PORTFOLIO_DATA = {
     // PINNED GITHUB REPOSITORIES (Synced with https://github.com/Dutch-panda)
     // =========================================================================
     {
+      id: "news-update",
+      category: "github",
+      featured: true,
+      problem: "Information overload across scattered tech, AI, and market feeds without LLM API costs",
+      solution: "Personal News & Trends Digest · Automated Zero-LLM Aggregator",
+      tagLabel: "GitHub ↗",
+      tagType: "github",
+      year: "2026",
+      role: "System & Workflow Designer (agent-assisted implementation)",
+      url: "https://github.com/Dutch-panda/news-update",
+      scopeHeading: "Multi-Source Ingestion & Zero-LLM Ranking",
+      methodologyHeading: "Scheduling, Deduplication & Delivery Channels",
+      pipeline: [
+        "HN, GitHub & RSS Fetchers",
+        "Rule-Based Classifier",
+        "URL & Fingerprint Dedup",
+        "GitHub Actions / Worker",
+        "Telegram & Pages Archive",
+      ],
+      details:
+        "Designed an automated zero-LLM personal news and trends aggregator powered by Python, GitHub Actions, GitHub Pages, Telegram, and a Cloudflare Worker bridge. Defined the 6-category taxonomy, source mix, keyword/velocity ranking rules, deduplication behavior, and scheduled/on-demand delivery, directing agent-assisted implementation.",
+      methodology: [
+        "Specified multi-source ingestion across Hacker News (Algolia/Firebase), GitHub Trending/Search, and 15+ RSS/Atom feeds.",
+        "Defined rule-based keyword classification, velocity ranking, and URL/title-fingerprint deduplication rules (src/classifier.py, src/dedup.py).",
+        "Directed agent-assisted implementation of 3x-daily GitHub Actions digests, on-demand Telegram slash commands via Cloudflare Workers, and auto-built GitHub Pages Markdown archives.",
+      ],
+      stack: ["Python", "GitHub Actions", "GitHub Pages", "Cloudflare Workers", "Telegram Bot API", "YAML"],
+      outcome: "Automated 3x-daily & on-demand topic digests with zero LLM cost and a searchable static archive.",
+    },
+    {
       id: "buildrelay",
       category: "github",
       featured: true,
@@ -126,6 +156,11 @@ window.PORTFOLIO_DATA = {
   ],
 
   updates: [
+    {
+      date: "Nov 2026",
+      title: "Published Personal News & Trends Digest (news-update) on GitHub — zero-LLM Python + Telegram + Pages engine",
+      tag: "GitHub",
+    },
     {
       date: "Oct 2026",
       title: "Published BuildRelay (Multi-Agent Engineering Platform) & Periodic Table Companion on GitHub",
@@ -235,7 +270,20 @@ window.PORTFOLIO_DATA = {
       { name: "Dutch", level: "A2 · Improving" },
       { name: "Farsi", level: "Native" },
     ],
-    experience: [
+    selectedProjects: [
+      {
+        id: "proj-news-update",
+        role: "System & Workflow Designer (agent-assisted implementation)",
+        org: "Personal News & Trends Digest (news-update)",
+        current: false,
+        dates: "Nov 2026",
+        meta: "Independent Project · Agent-Assisted Implementation · Python, GitHub Actions, Cloudflare Workers, Telegram & GitHub Pages",
+        bullets: [
+          "Designed an automated zero-LLM news and trends digest workflow aggregating Hacker News, GitHub Trending/Search, and RSS/Atom feeds across 6 categories on a 3x-daily schedule.",
+          "Defined rule-based keyword classification, popularity/velocity ranking, URL/title-fingerprint deduplication, and YAML-driven source configuration.",
+          "Directed agent-assisted implementation of scheduled GitHub Actions delivery, on-demand Telegram slash commands via a Cloudflare Worker bridge, and an auto-generated GitHub Pages archive.",
+        ],
+      },
       {
         id: "proj-buildrelay",
         role: "System & Workflow Designer (agent-assisted implementation)",
@@ -250,6 +298,8 @@ window.PORTFOLIO_DATA = {
           "Tested the workflow on a two-line natural-language request for an offline Python Flask app that collects HTML form responses and generates a question-and-answer PDF.",
         ],
       },
+    ],
+    experience: [
       {
         id: "exp-pulse",
         role: "Independent Business Analyst / Consultant",
