@@ -421,13 +421,13 @@ body {
 }
 
 .stage-section {
-  position: sticky;
-  top: var(--header-h);
-  min-height: calc(100vh - var(--header-h) - var(--footer-h));
+  position: relative;
+  min-height: auto;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 28px 32px;
+  padding: 36px 32px;
+  scroll-margin-top: calc(var(--header-h) + 12px);
 }
 
 #stage-hero {
@@ -436,12 +436,12 @@ body {
 
 #stage-specialties {
   z-index: 20;
-  margin-top: 16vh;
+  margin-top: 0;
 }
 
 #stage-archive {
   z-index: 30;
-  margin-top: 16vh;
+  margin-top: 0;
 }
 
 /* ==========================================================================
@@ -3113,6 +3113,37 @@ ol.sources-list li:target {
     font-size: 0.72rem;
     padding: 3px 8px;
   }
+}
+
+.hero-contact-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.hero-email-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-decoration: none;
+  padding: 11px 22px;
+}
+
+.project-diagram-wrap {
+  margin-top: 20px;
+  padding: 16px;
+  background: rgba(14, 15, 20, 0.72);
+  border: 1px solid var(--border-hairline);
+  border-radius: 8px;
+}
+
+.project-diagram-svg {
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
 /* ==========================================================================

@@ -150,72 +150,30 @@
   }
 
   /* --------------------------------------------------------------------------
-   * 3. Hardware-Accelerated Stage Transforms (Home Page Only)
+   * 3. Stage Navigation & Active Rail Indicator (Home Page Only)
    * -------------------------------------------------------------------------- */
   const stages = Array.from(document.querySelectorAll('.stage-section'));
-  const stageBoxes = stages.map((s) => s.querySelector('.stage-box'));
   const railDots = Array.from(document.querySelectorAll('.rail-dot'));
 
   if (currentPage === 'home' && stages.length > 0) {
     const isReducedMotion = () =>
       window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    function getMaxScroll() {
-      return Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
-    }
-
-    function updateStackTransforms() {
-      if (!stages.length) return;
-      const vh = window.innerHeight;
-      const reduced = isReducedMotion();
-      let activeIdx = 0;
-
-      for (let idx = 0; idx < stages.length; idx++) {
-        const section = stages[idx];
-        const nextSection = stages[idx + 1];
-        const box = stageBoxes[idx];
-        if (!box) continue;
-
-        const rect = section.getBoundingClientRect();
-        if (rect.top <= vh * 0.5) {
-          activeIdx = idx;
-        }
-
-        if (reduced) {
-          box.style.transform = 'none';
-          box.style.opacity = '1';
-          continue;
-        }
-
-        if (nextSection && window.innerWidth > 960) {
-          const nextRect = nextSection.getBoundingClientRect();
-          const stickyTop = 96;
-          const overlapStart = vh - 44;
-          const overlapDistance = Math.max(1, overlapStart - stickyTop);
-
-          const rawProgress = (overlapStart - nextRect.top) / overlapDistance;
-          const progress = Math.max(0, Math.min(1, rawProgress));
-
-          if (progress > 0.001) {
-            const eased = progress * progress * (3 - 2 * progress);
-            const scale = 1 - eased * 0.045;
-            const opacity = 1 - eased * 0.72;
-            const translateY = -eased * 22;
-            box.style.transform = `translate3d(0, ${translateY.toFixed(2)}px, 0) scale(${scale.toFixed(4)})`;
-            box.style.opacity = opacity.toFixed(3);
-          } else {
-            box.style.transform = 'translate3d(0, 0, 0) scale(1)';
-            box.style.opacity = '1';
-          }
-        } else {
-          box.style.transform = 'translate3d(0, 0, 0) scale(1)';
-          box.style.opacity = '1';
-        }
-      }
-
+    function setActiveRailDot(activeIdx) {
       railDots.forEach((dot, idx) => {
         dot.classList.toggle('active', idx === activeIdx);
       });
+    }
+
+    function updateActiveStageOnScroll() {
+      const triggerY = window.innerHeight * 0.35;
+      let activeIdx = 0;
+      for (let idx = 0; idx < stages.length; idx++) {
+        if (stages[idx].getBoundingClientRect().top <= triggerY) {
+          activeIdx = idx;
+        }
+      }
+      setActiveRailDot(activeIdx);
     }
 
     let isTicking = false;
@@ -224,7 +182,7 @@
       () => {
         if (!isTicking) {
           window.requestAnimationFrame(() => {
-            updateStackTransforms();
+            updateActiveStageOnScroll();
             isTicking = false;
           });
           isTicking = true;
@@ -233,33 +191,15 @@
       { passive: true }
     );
 
-    window.addEventListener(
-      'resize',
-      () => {
-        updateStackTransforms();
-      },
-      { passive: true }
-    );
-
-    function getStageScrollOffset(targetIndex) {
-      if (!stages.length) return 0;
-      const clamped = Math.max(0, Math.min(stages.length - 1, targetIndex));
-      if (clamped === 0) return 0;
-
-      let offset = 0;
-      for (let i = 0; i < clamped; i++) {
-        offset += stages[i].offsetHeight + window.innerHeight * 0.16;
-      }
-      return Math.min(getMaxScroll(), offset);
-    }
-
     function scrollToStage(targetIndex) {
-      const reduced = isReducedMotion();
-      const offset = getStageScrollOffset(targetIndex);
-      window.scrollTo({
-        top: offset,
-        behavior: reduced ? 'auto' : 'smooth',
+      const clamped = Math.max(0, Math.min(stages.length - 1, targetIndex));
+      const targetEl = stages[clamped];
+      if (!targetEl) return;
+      targetEl.scrollIntoView({
+        behavior: isReducedMotion() ? 'auto' : 'smooth',
+        block: 'start',
       });
+      setActiveRailDot(clamped);
     }
 
     railDots.forEach((dot, idx) => {
@@ -273,7 +213,7 @@
       });
     });
 
-    updateStackTransforms();
+    updateActiveStageOnScroll();
   }
 
   /* --------------------------------------------------------------------------
@@ -420,125 +360,6 @@
     renderHomeProjects('all');
   }
 
-  const problemForm = document.getElementById('problem-form');
-  const problemEmail = document.getElementById('problem-email');
-  const problemInput = document.getElementById('problem-input');
-  const problemFeedback = document.getElementById('problem-form-feedback');
-
-  if (problemForm && problemInput) {
-    problemForm.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const email = problemEmail ? problemEmail.value.trim() : '';
-      const note = problemInput.value.trim();
-
-      if (problemEmail && !email) {
-        problemEmail.focus();
-        showToast('Please provide your email address so I can respond.');
-        return;
-      }
-
-      if (!note) {
-        problemInput.focus();
-        showToast('Please describe your system, data, or workflow problem.');
-        return;
-      }
-
-      const submitBtn = problemForm.querySelector('button[type="submit"]');
-      const originalBtnText = submitBtn ? submitBtn.textContent : 'Send Note';
-      if (submitBtn) {
-        submitBtn.disabled = true;
-        submitBtn.textContent = 'Sending...';
-      }
-
-      if (problemFeedback) {
-        problemFeedback.innerHTML = '';
-      }
-
-      const endpoint =
-        data.meta.formEndpoint || `https://formsubmit.co/ajax/${data.meta.directEmail}`;
-
-      try {
-        const payload = {
-          _subject: 'Portfolio Direct Inquiry — Ehsan Negahdar',
-          email: email,
-          _replyto: email,
-          message: note,
-          source: window.location.href,
-          timestamp: new Date().toISOString(),
-        };
-
-        const res = await fetch(endpoint, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            Accept: 'application/json',
-          },
-          body: JSON.stringify(payload),
-        });
-
-        if (res.ok) {
-          showToast(`✓ Note sent successfully to ${data.meta.directEmail}!`);
-          if (problemFeedback) {
-            problemFeedback.innerHTML = `<span class="feedback-success">✓ Thank you! Your note has been dispatched. I will reply to ${escapeHtml(email)} soon.</span>`;
-          }
-          if (problemEmail) problemEmail.value = '';
-          problemInput.value = '';
-        } else {
-          throw new Error('Endpoint returned HTTP ' + res.status);
-        }
-      } catch (err) {
-        // NON-DESTRUCTIVE RECOVERY (UX-02): Keep user's input intact
-        showToast('Unable to send automatically. Note preserved below.');
-        if (problemFeedback) {
-          const subject = encodeURIComponent('Problem Inquiry — Direct Note');
-          const mailBody = encodeURIComponent(
-            `Hi Ehsan,\n\nFrom: ${email}\nProblem description:\n"${note}"\n\nBest regards,`
-          );
-          const mailtoUrl = `mailto:${data.meta.directEmail}?subject=${subject}&body=${mailBody}`;
-
-          problemFeedback.innerHTML = `
-            <div class="feedback-fallback-banner">
-              <p class="feedback-text warning">⚠ Direct dispatch service unavailable. Your note has been preserved.</p>
-              <div class="feedback-actions">
-                <button type="button" class="feedback-btn action-copy" id="feedback-copy-btn">📋 Copy Note</button>
-                <a href="${mailtoUrl}" class="feedback-btn action-email" target="_blank" rel="noopener noreferrer">✉ Open in Email Client</a>
-                <button type="button" class="feedback-btn action-retry" id="feedback-retry-btn">↻ Retry</button>
-              </div>
-            </div>
-          `;
-
-          const copyBtn = document.getElementById('feedback-copy-btn');
-          if (copyBtn) {
-            copyBtn.addEventListener('click', async () => {
-              const fullNote = `Contact: ${email}\nProblem: ${note}`;
-              try {
-                if (!navigator.clipboard) throw new Error('No clipboard API');
-                await navigator.clipboard.writeText(fullNote);
-                copyBtn.textContent = '✓ Copied!';
-                showToast('✓ Note & contact details copied to clipboard.');
-              } catch (clipErr) {
-                copyBtn.textContent = 'Select text manually';
-                showToast('Clipboard access unavailable. Please select your text manually.');
-              }
-            });
-          }
-
-          const retryBtn = document.getElementById('feedback-retry-btn');
-          if (retryBtn) {
-            retryBtn.addEventListener('click', () => {
-              problemForm.requestSubmit();
-            });
-          }
-        }
-      } finally {
-        if (submitBtn) {
-          submitBtn.disabled = false;
-          submitBtn.textContent = originalBtnText;
-        }
-      }
-    });
-  }
-
   /* --------------------------------------------------------------------------
    * 5. DEDICATED PROJECTS PAGE RENDERER (projects.html)
    * -------------------------------------------------------------------------- */
@@ -600,6 +421,48 @@
             </ul>
           </div>
         </div>
+
+        ${
+          proj.id === 'buildrelay'
+            ? `
+        <div class="project-diagram-wrap" aria-label="BuildRelay workflow architecture diagram">
+          <div class="project-pipeline-label">ARCHITECTURE FLOW //</div>
+          <svg class="project-diagram-svg" viewBox="0 0 860 110" role="img" aria-label="Brief to Multi-Agent Routing to Validation Gates to Context and SQLite to Human Review Checkpoint">
+            <defs>
+              <marker id="br-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                <path d="M 0 1 L 10 5 L 0 9 z" fill="#ff7a33" />
+              </marker>
+            </defs>
+            <g font-family="JetBrains Mono, monospace" font-size="11" text-anchor="middle">
+              <rect x="6" y="24" width="140" height="58" rx="6" fill="#14161d" stroke="#2d3342" />
+              <text x="76" y="49" fill="#f3f4f6" font-weight="600">01. NL Brief</text>
+              <text x="76" y="67" fill="#9ca3af" font-size="9.5">Request &amp; Scope</text>
+              <line x1="146" y1="53" x2="174" y2="53" stroke="#ff7a33" stroke-width="1.5" marker-end="url(#br-arrow)" />
+
+              <rect x="178" y="24" width="144" height="58" rx="6" fill="#14161d" stroke="#2d3342" />
+              <text x="250" y="49" fill="#f3f4f6" font-weight="600">02. Routing</text>
+              <text x="250" y="67" fill="#9ca3af" font-size="9.5">Role Assignment</text>
+              <line x1="322" y1="53" x2="350" y2="53" stroke="#ff7a33" stroke-width="1.5" marker-end="url(#br-arrow)" />
+
+              <rect x="354" y="24" width="144" height="58" rx="6" fill="#14161d" stroke="#2d3342" />
+              <text x="426" y="49" fill="#f3f4f6" font-weight="600">03. Phase Gates</text>
+              <text x="426" y="67" fill="#9ca3af" font-size="9.5">Automated Checks</text>
+              <line x1="498" y1="53" x2="526" y2="53" stroke="#ff7a33" stroke-width="1.5" marker-end="url(#br-arrow)" />
+
+              <rect x="530" y="24" width="144" height="58" rx="6" fill="#14161d" stroke="#2d3342" />
+              <text x="602" y="49" fill="#f3f4f6" font-weight="600">04. Persistence</text>
+              <text x="602" y="67" fill="#9ca3af" font-size="9.5">SQLite &amp; Vault</text>
+              <line x1="674" y1="53" x2="702" y2="53" stroke="#ff7a33" stroke-width="1.5" marker-end="url(#br-arrow)" />
+
+              <rect x="706" y="24" width="148" height="58" rx="6" fill="#14161d" stroke="#34d399" />
+              <text x="780" y="49" fill="#34d399" font-weight="600">05. Human Gate</text>
+              <text x="780" y="67" fill="#9ca3af" font-size="9.5">Review &amp; Sign-Off</text>
+            </g>
+          </svg>
+        </div>
+        `
+            : ''
+        }
 
         ${
           proj.pipeline && proj.pipeline.length

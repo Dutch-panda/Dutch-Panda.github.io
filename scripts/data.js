@@ -4,20 +4,19 @@
  */
 window.PORTFOLIO_DATA = {
   meta: {
-    title: "Ehsan Negahdar — Business Data Analyst & Systems Architect",
-    kicker: "EHSAN NEGAHDAR // BUSINESS DATA ANALYST & SYSTEMS ARCHITECT",
-    headlineLine1: "Untangling complex systems.",
-    headlineLine2: "Designing autonomous workflows.",
+    title: "Ehsan Negahdar — AI Solution Designer",
+    kicker: "EHSAN NEGAHDAR // AI SOLUTION DESIGNER",
+    headlineLine1: "Business Analysis, Systems Design",
+    headlineLine2: "& Process Optimization.",
     subheadline:
-      "Turning messy operational data, process bottlenecks, and ambiguous domain questions into clear architecture, decision frameworks, and AI workflows.",
+      "I turn business needs into practical systems and processes, using AI where it fits.",
     availability: "Available",
-    availabilityDetail: "Amsterdam, NL · Open for select systems, data & AI workflow problems",
+    availabilityDetail: "Muscat, Oman · Business Analysis, Systems Design & AI Workflows",
     directEmail: "en.mirror@gmail.com",
     phone: "+31 68 494 2790",
-    location: "Amsterdam, Netherlands",
+    location: "Muscat, Oman",
     githubUrl: "https://github.com/Dutch-panda",
     linkedinUrl: "https://www.linkedin.com/in/ehsan-negahdar/",
-    systemStatus: "Clean",
   },
 
   specialties: [
@@ -146,20 +145,14 @@ window.PORTFOLIO_DATA = {
 
   cv: {
     name: "Ehsan Negahdar",
-    title: "Business Data Analyst · Strategy, Systems & Process Optimization",
-    location: "Amsterdam, Netherlands",
+    title: "AI Solution Designer · Business Analysis, Systems Design & Process Optimization",
+    location: "Muscat, Oman · Eligible for Dutch Orientation Year (zoekjaar)",
     email: "en.mirror@gmail.com",
     phone: "+31 68 494 2790",
     linkedin: "https://www.linkedin.com/in/ehsan-negahdar/",
     github: "https://github.com/Dutch-panda",
     summary:
       "Business and systems analysis professional focused on designing practical data and workflow solutions around organizational needs. Combines process analysis, requirements definition, and system design with data analysis and human-in-the-loop workflows. Hands-on expertise in Python, SQL, Power BI, and agentic workflows.",
-    kpis: [
-      { num: "6+", label: "Years in Data, Systems & Analytics" },
-      { num: "4", label: "Industries: Fintech, Consulting, Retail, Education" },
-      { num: "2", label: "Master's Degrees (UvA & UT)" },
-      { num: "Core", label: "SQL · Python · Power BI · Agentic AI" },
-    ],
     roadmap: [
       {
         step: "01",
@@ -174,7 +167,7 @@ window.PORTFOLIO_DATA = {
         step: "02",
         period: "2021 – 2023",
         stage: "Process Optimization & Systems Design",
-        milestones: "Sarshenas Consulting · MSc IT Management (UT)",
+        milestones: "Sarshenas Consulting · MSc IT Management (Tehran)",
         skills: ["Process Mapping", "Operational Bottlenecks", "KPI Dashboards", "Requirements Specs"],
         summary: "Analyzed cross-functional client processes, mapped operational workflows, and translated analytical findings into executive strategies.",
         current: false,
