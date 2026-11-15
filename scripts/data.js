@@ -272,19 +272,6 @@ window.PORTFOLIO_DATA = {
     ],
     selectedProjects: [
       {
-        id: "proj-news-update",
-        role: "System & Workflow Designer (agent-assisted implementation)",
-        org: "Personal News & Trends Digest (news-update)",
-        current: false,
-        dates: "Nov 2026",
-        meta: "Independent Project · Agent-Assisted Implementation · Python, GitHub Actions, Cloudflare Workers, Telegram & GitHub Pages",
-        bullets: [
-          "Designed an automated zero-LLM news and trends digest workflow aggregating Hacker News, GitHub Trending/Search, and RSS/Atom feeds across 6 categories on a 3x-daily schedule.",
-          "Defined rule-based keyword classification, popularity/velocity ranking, URL/title-fingerprint deduplication, and YAML-driven source configuration.",
-          "Directed agent-assisted implementation of scheduled GitHub Actions delivery, on-demand Telegram slash commands via a Cloudflare Worker bridge, and an auto-generated GitHub Pages archive.",
-        ],
-      },
-      {
         id: "proj-buildrelay",
         role: "System & Workflow Designer (agent-assisted implementation)",
         org: "BuildRelay (Independent project / portfolio showcase)",
