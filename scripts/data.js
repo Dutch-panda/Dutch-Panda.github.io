@@ -63,36 +63,6 @@ window.PORTFOLIO_DATA = {
     // PINNED GITHUB REPOSITORIES (Synced with https://github.com/Dutch-panda)
     // =========================================================================
     {
-      id: "news-update",
-      category: "github",
-      featured: true,
-      problem: "Information overload across scattered tech, AI, and market feeds without LLM API costs",
-      solution: "Personal News & Trends Digest · Automated Zero-LLM Aggregator",
-      tagLabel: "GitHub ↗",
-      tagType: "github",
-      year: "2026",
-      role: "System & Workflow Designer (agent-assisted implementation)",
-      url: "https://github.com/Dutch-panda/news-update",
-      scopeHeading: "Multi-Source Ingestion & Zero-LLM Ranking",
-      methodologyHeading: "Scheduling, Deduplication & Delivery Channels",
-      pipeline: [
-        "HN, GitHub & RSS Fetchers",
-        "Rule-Based Classifier",
-        "URL & Fingerprint Dedup",
-        "GitHub Actions / Worker",
-        "Telegram & Pages Archive",
-      ],
-      details:
-        "Designed an automated zero-LLM personal news and trends aggregator powered by Python, GitHub Actions, GitHub Pages, Telegram, and a Cloudflare Worker bridge. Defined the 6-category taxonomy, source mix, keyword/velocity ranking rules, deduplication behavior, and scheduled/on-demand delivery, directing agent-assisted implementation.",
-      methodology: [
-        "Specified multi-source ingestion across Hacker News (Algolia/Firebase), GitHub Trending/Search, and 15+ RSS/Atom feeds.",
-        "Defined rule-based keyword classification, velocity ranking, and URL/title-fingerprint deduplication rules (src/classifier.py, src/dedup.py).",
-        "Directed agent-assisted implementation of 3x-daily GitHub Actions digests, on-demand Telegram slash commands via Cloudflare Workers, and auto-built GitHub Pages Markdown archives.",
-      ],
-      stack: ["Python", "GitHub Actions", "GitHub Pages", "Cloudflare Workers", "Telegram Bot API", "YAML"],
-      outcome: "Automated 3x-daily & on-demand topic digests with zero LLM cost and a searchable static archive.",
-    },
-    {
       id: "buildrelay",
       category: "github",
       featured: true,
@@ -121,6 +91,36 @@ window.PORTFOLIO_DATA = {
       ],
       stack: ["Python 3.10+", "Agent Orchestration", "SQLite Logging", "Context Persistence", "Human-in-the-Loop"],
       outcome: "Functional multi-agent workflow turning prompts into validated deliverables with human checkpoint gates.",
+    },
+    {
+      id: "news-update",
+      category: "github",
+      featured: true,
+      problem: "Information overload across scattered tech, AI, and market feeds without LLM API costs",
+      solution: "Personal News & Trends Digest · Automated Zero-LLM Aggregator",
+      tagLabel: "GitHub ↗",
+      tagType: "github",
+      year: "2026",
+      role: "System & Workflow Designer (agent-assisted implementation)",
+      url: "https://github.com/Dutch-panda/news-update",
+      scopeHeading: "Multi-Source Ingestion & Zero-LLM Ranking",
+      methodologyHeading: "Scheduling, Deduplication & Delivery Channels",
+      pipeline: [
+        "HN, GitHub & RSS Fetchers",
+        "Rule-Based Classifier",
+        "URL & Fingerprint Dedup",
+        "GitHub Actions / Worker",
+        "Telegram & Pages Archive",
+      ],
+      details:
+        "Designed an automated zero-LLM personal news and trends aggregator powered by Python, GitHub Actions, GitHub Pages, Telegram, and a Cloudflare Worker bridge. Defined the 6-category taxonomy, source mix, keyword/velocity ranking rules, deduplication behavior, and scheduled/on-demand delivery, directing agent-assisted implementation.",
+      methodology: [
+        "Specified multi-source ingestion across Hacker News (Algolia/Firebase), GitHub Trending/Search, and 15+ RSS/Atom feeds.",
+        "Defined rule-based keyword classification, velocity ranking, and URL/title-fingerprint deduplication rules (src/classifier.py, src/dedup.py).",
+        "Directed agent-assisted implementation of 3x-daily GitHub Actions digests, on-demand Telegram slash commands via Cloudflare Workers, and auto-built GitHub Pages Markdown archives.",
+      ],
+      stack: ["Python", "GitHub Actions", "GitHub Pages", "Cloudflare Workers", "Telegram Bot API", "YAML"],
+      outcome: "Automated 3x-daily & on-demand topic digests with zero LLM cost and a searchable static archive.",
     },
     {
       id: "periodic-table-practice",

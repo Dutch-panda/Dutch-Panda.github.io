@@ -256,26 +256,15 @@
     archiveList.innerHTML = filtered
       .map(
         (proj, idx) => `
-      <div class="archive-row ${idx === 0 ? 'expanded' : ''}" data-project-id="${proj.id}">
-        <div class="archive-row-header">
-          <button
-            type="button"
-            class="archive-row-toggle"
-            aria-expanded="${idx === 0 ? 'true' : 'false'}"
-            aria-controls="drawer-${proj.id}"
-            id="toggle-${proj.id}"
-          >
-            <div class="problem-cell">
-              <span class="badge-problem">Problem</span>
-              <span class="problem-text">${proj.problem}</span>
-            </div>
-            <span class="arrow-divider" aria-hidden="true">──▶</span>
-            <div class="solution-cell">
-              <span class="badge-solution">Solution</span>
-              <span class="solution-text">${proj.solution}</span>
-            </div>
-            <span class="accordion-chevron" aria-hidden="true">▾</span>
-          </button>
+      <article class="home-project-card" data-project-id="${proj.id}">
+        <div class="project-case-top home-project-top">
+          <div class="project-case-meta">
+            <span class="home-project-index">0${idx + 1}</span>
+            <span>·</span>
+            <span>${proj.year}</span>
+            <span>·</span>
+            <span>${proj.role || 'Systems & Analytics'}</span>
+          </div>
           <a
             href="${proj.url}"
             class="provenance-tag"
@@ -285,64 +274,45 @@
             ${proj.tagLabel}
           </a>
         </div>
-        <div
-          class="archive-row-drawer"
-          id="drawer-${proj.id}"
-          role="region"
-          aria-labelledby="toggle-${proj.id}"
-        >
-          <div class="archive-row-drawer-inner">
-            <p class="drawer-desc">${proj.details}</p>
-            ${
-              proj.pipeline && proj.pipeline.length
-                ? `
-            <div class="project-pipeline-wrap home-pipeline">
-              <div class="project-pipeline-label">EXECUTION PIPELINE //</div>
-              <div class="project-pipeline-strip">
-                ${proj.pipeline
-                  .map(
-                    (step, sIdx) => `
-                  <span class="pipeline-step"><span class="step-num">0${sIdx + 1}</span> ${step}</span>
-                  ${sIdx < proj.pipeline.length - 1 ? '<span class="pipeline-arrow" aria-hidden="true">→</span>' : ''}
-                `
-                  )
-                  .join('')}
-              </div>
-            </div>
+
+        <h3 class="home-project-title">${proj.solution}</h3>
+        <p class="home-project-problem"><span class="badge-problem">Problem</span> ${proj.problem}</p>
+
+        ${
+          proj.pipeline && proj.pipeline.length
+            ? `
+        <div class="project-pipeline-wrap home-pipeline">
+          <div class="project-pipeline-label">PROCESS &amp; WORKFLOW //</div>
+          <div class="project-pipeline-strip">
+            ${proj.pipeline
+              .map(
+                (step, sIdx) => `
+              <span class="pipeline-step"><span class="step-num">0${sIdx + 1}</span> ${step}</span>
+              ${sIdx < proj.pipeline.length - 1 ? '<span class="pipeline-arrow" aria-hidden="true">→</span>' : ''}
             `
-                : ''
-            }
-            <div class="drawer-meta">
-              <div class="drawer-stack">
-                ${proj.stack.map((s) => `<span class="stack-pill">${s}</span>`).join('')}
-              </div>
-              <span class="drawer-outcome">✓ ${proj.outcome}</span>
-            </div>
+              )
+              .join('')}
           </div>
         </div>
-      </div>
+        `
+            : ''
+        }
+
+        <div class="home-project-skills-wrap">
+          <div class="project-pipeline-label">SKILLS &amp; STACK //</div>
+          <div class="drawer-stack home-project-skills">
+            ${proj.stack.map((s) => `<span class="stack-pill">${s}</span>`).join('')}
+          </div>
+        </div>
+
+        <div class="home-project-footer">
+          <span class="drawer-outcome">✓ ${proj.outcome}</span>
+          <a href="./projects.html#${proj.id}" class="stage-step-btn">Full Case Spec →</a>
+        </div>
+      </article>
     `
       )
       .join('');
-
-    archiveList.querySelectorAll('.archive-row').forEach((row) => {
-      const toggleBtn = row.querySelector('.archive-row-toggle');
-
-      if (toggleBtn) {
-        toggleBtn.addEventListener('click', () => {
-          const isExpanded = row.classList.contains('expanded');
-          archiveList.querySelectorAll('.archive-row').forEach((r) => {
-            r.classList.remove('expanded');
-            const btn = r.querySelector('.archive-row-toggle');
-            if (btn) btn.setAttribute('aria-expanded', 'false');
-          });
-          if (!isExpanded) {
-            row.classList.add('expanded');
-            toggleBtn.setAttribute('aria-expanded', 'true');
-          }
-        });
-      }
-    });
   }
 
   filterChips.forEach((chip) => {

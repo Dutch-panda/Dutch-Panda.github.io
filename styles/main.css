@@ -1297,6 +1297,7 @@ body {
 
 .project-case-card {
   padding: 36px 44px;
+  scroll-margin-top: calc(var(--header-h) + 24px);
 }
 
 .project-case-top {
@@ -3174,6 +3175,82 @@ ol.sources-list li:target {
   width: 100%;
   height: auto;
   display: block;
+}
+
+/* Homepage Distinct Scannable Project Cards */
+#stage-archive .archive-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.home-project-card {
+  background: #14161d;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  padding: 22px 24px;
+  transition: border-color 180ms ease, transform 180ms ease;
+}
+
+.home-project-card:hover {
+  border-color: rgba(255, 123, 41, 0.45);
+}
+
+.home-project-top {
+  padding-bottom: 12px;
+  margin-bottom: 14px;
+}
+
+.home-project-index {
+  color: var(--accent-orange);
+  font-weight: 700;
+}
+
+.home-project-title {
+  font-size: 1.12rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 8px 0;
+  line-height: 1.35;
+}
+
+.home-project-problem {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin: 0 0 16px 0;
+  line-height: 1.5;
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.home-pipeline .pipeline-step {
+  border-color: rgba(255, 123, 41, 0.35);
+  background: rgba(255, 123, 41, 0.06);
+  color: #f3f4f6;
+}
+
+.home-project-skills-wrap {
+  margin-top: 14px;
+}
+
+.home-project-skills .stack-pill {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  color: #f3f4f6;
+  font-weight: 500;
+}
+
+.home-project-footer {
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border-hairline);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
 }
 
 /* ==========================================================================
