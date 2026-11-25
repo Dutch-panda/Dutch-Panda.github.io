@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ehsan Negahdar — Cover Letter (A4 Printable Template)</title>
+  <meta name="description" content="Formal A4 printable cover letter template for Ehsan Negahdar — AI Solution Designer: Business Analysis, Systems Design &amp; Process Optimization." />
+  <meta name="author" content="Ehsan Negahdar" />
+  <link rel="icon" type="image/svg+xml" href="./assets/logo-git-e.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    :root {
+      --bg: #eef1f0;
+      --panel: #ffffff;
+      --ink: #1b2430;
+      --ink-soft: #5b6472;
+      --accent: #1e6e67;
+      --accent-tint: #e4f0ee;
+      --line: #dee3e3;
+      --mono: 'IBM Plex Mono', monospace;
+    }
+
+    @page {
+      size: A4 portrait;
+      margin: 0;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 9.2pt;
+      line-height: 1.48;
+      -webkit-font-smoothing: antialiased;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    /* Top action toolbar (screen only) */
+    .screen-toolbar {
+      max-width: 210mm;
+      margin: 18px auto 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 10px 16px;
+      background: #101116;
+      color: #f4f4f6;
+      border-radius: 8px;
+      font-family: var(--mono);
+      font-size: 11.5px;
+    }
+
+    .toolbar-actions {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .toolbar-btn {
+      background: #ff7b29;
+      color: #0b0b0d;
+      border: none;
+      padding: 7px 14px;
+      border-radius: 5px;
+      font-family: var(--mono);
+      font-size: 11.5px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .toolbar-btn-secondary {
+      background: #1e222d;
+      color: #f4f4f6;
+      border: 1px solid #303646;
+      padding: 6px 13px;
+      border-radius: 5px;
+      font-family: var(--mono);
+      font-size: 11.5px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .toolbar-btn-secondary:hover {
+      border-color: #4b5563;
+      color: #ffffff;
+    }
+
+    .toolbar-link {
+      color: #9ca3af;
+      text-decoration: none;
+    }
+
+    .toolbar-link:hover {
+      color: #ffffff;
+    }
+
+    /* A4 Sheet Container: 210mm x 297mm */
+    .a4-sheet {
+      width: 210mm;
+      min-height: 297mm;
+      margin: 0 auto 28px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ---------- Header (Colored Band Paired with Portfolio & A4 CV) ---------- */
+    header {
+      padding: 10mm 16mm 7mm;
+      background-color: #13252a;
+      background-image: linear-gradient(135deg, #10141b 0%, #163338 100%);
+      border-bottom: 3px solid #ff7b29;
+      flex-shrink: 0;
+    }
+
+    .name-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    h1 {
+      font-family: 'Fraunces', serif;
+      font-weight: 600;
+      font-size: 20pt;
+      letter-spacing: -0.01em;
+      line-height: 1.15;
+      color: #ffffff;
+    }
+
+    .title {
+      font-family: var(--mono);
+      font-size: 7.6pt;
+      letter-spacing: 0.04em;
+      line-height: 1.45;
+      text-transform: uppercase;
+      color: #5eead4;
+      margin-top: 4px;
+      max-width: 105mm;
+    }
+
+    .contact {
+      font-size: 7.6pt;
+      color: #d1d5db;
+      text-align: right;
+      line-height: 1.6;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .contact a {
+      color: #f3f4f6;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.28);
+    }
+
+    /* ---------- Letter Content ---------- */
+    main.letter-body {
+      flex: 1;
+      padding: 7.5mm 16mm 10mm;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .letter-meta-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 20px;
+      margin-bottom: 5mm;
+    }
+
+    .recipient-block {
+      font-size: 9.2pt;
+      line-height: 1.5;
+      color: var(--ink);
+    }
+
+    .recipient-line {
+      display: block;
+    }
+
+    .recipient-name {
+      font-weight: 600;
+    }
+
+    .letter-date {
+      font-family: var(--mono);
+      font-size: 8.2pt;
+      color: var(--ink-soft);
+      text-align: right;
+      white-space: nowrap;
+      padding-top: 2px;
+    }
+
+    .subject-bar {
+      background: var(--accent-tint);
+      border-left: 3px solid var(--accent);
+      padding: 6px 11px;
+      margin-bottom: 5.5mm;
+      font-family: var(--mono);
+      font-size: 8.3pt;
+      font-weight: 500;
+      color: var(--ink);
+      letter-spacing: 0.01em;
+    }
+
+    .subject-label {
+      color: var(--accent);
+      font-weight: 600;
+      margin-right: 6px;
+      text-transform: uppercase;
+    }
+
+    .salutation {
+      font-weight: 600;
+      margin-bottom: 3.5mm;
+      color: var(--ink);
+    }
+
+    .letter-paragraphs p {
+      margin-bottom: 3.4mm;
+      color: #26303c;
+      text-align: left;
+    }
+
+    .letter-paragraphs p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Optional Key Alignment Highlights */
+    .alignment-box {
+      margin: 4mm 0 4.5mm;
+      padding: 3mm 4.5mm;
+      border: 1px solid var(--line);
+      border-left: 3px solid var(--accent);
+      background: #fafcfb;
+    }
+
+    .alignment-heading {
+      font-family: var(--mono);
+      font-size: 7.3pt;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 1.5mm;
+    }
+
+    .alignment-list {
+      padding-left: 4mm;
+      margin: 0;
+    }
+
+    .alignment-list li {
+      font-size: 8.6pt;
+      line-height: 1.44;
+      color: #26303c;
+      margin-bottom: 1.2mm;
+    }
+
+    .alignment-list li:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Closing & Signature */
+    .closing-block {
+      margin-top: 4.5mm;
+    }
+
+    .closing-phrase {
+      margin-bottom: 4.5mm;
+      color: var(--ink);
+    }
+
+    .signature-name {
+      font-family: 'Fraunces', serif;
+      font-size: 13pt;
+      font-weight: 600;
+      color: var(--ink);
+      line-height: 1.2;
+    }
+
+    .signature-meta {
+      font-family: var(--mono);
+      font-size: 7.4pt;
+      color: var(--ink-soft);
+      margin-top: 2px;
+    }
+
+    .letter-footer {
+      margin-top: auto;
+      padding-top: 5mm;
+      border-top: 1px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--mono);
+      font-size: 7pt;
+      color: var(--ink-soft);
+    }
+
+    /* Screen-only editable affordance */
+    [contenteditable="true"] {
+      outline: none;
+      border-radius: 3px;
+      transition: background-color 140ms ease, box-shadow 140ms ease;
+    }
+
+    [contenteditable="true"]:hover {
+      background-color: rgba(30, 110, 103, 0.045);
+    }
+
+    [contenteditable="true"]:focus {
+      background-color: rgba(30, 110, 103, 0.07);
+      box-shadow: 0 0 0 1.5px rgba(30, 110, 103, 0.4);
+    }
+
+    @media print {
+      html, body {
+        background: #ffffff;
+      }
+
+      .screen-toolbar {
+        display: none !important;
+      }
+
+      .a4-sheet {
+        margin: 0;
+        border: none;
+        box-shadow: none;
+        width: 100%;
+        min-height: 295mm;
+        height: auto;
+      }
+
+      [contenteditable="true"],
+      [contenteditable="true"]:hover,
+      [contenteditable="true"]:focus {
+        background-color: transparent !important;
+        box-shadow: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="screen-toolbar">
+    <a href="./cv-a4.html" class="toolbar-link">← Open Matching A4 CV</a>
+    <span>Formal Cover Letter (Click any text below to edit directly)</span>
+    <div class="toolbar-actions">
+      <button type="button" class="toolbar-btn-secondary" id="reset-template-btn">Reset Template</button>
+      <button type="button" class="toolbar-btn" onclick="window.print()">Save / Print A4 PDF ↓</button>
+    </div>
+  </div>
+
+  <div class="a4-sheet">
+    <header>
+      <div class="name-row">
+        <div>
+          <h1>Ehsan Negahdar</h1>
+          <div class="title">AI Solution Designer · Business Analysis, Systems Design &amp; Process Optimization</div>
+        </div>
+        <div class="contact">
+          Muscat, Oman · Eligible for Dutch Orientation Year (zoekjaar)<br />
+          <a href="mailto:en.mirror@gmail.com">en.mirror@gmail.com</a> · +968 9932 3153<br />
+          <a href="https://www.linkedin.com/in/ehsan-negahdar/" target="_blank" rel="noopener noreferrer">linkedin.com/in/ehsan-negahdar</a> ·
+          <a href="https://github.com/Dutch-panda" target="_blank" rel="noopener noreferrer">github.com/Dutch-panda</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="letter-body">
+      <div class="letter-meta-row">
+        <div class="recipient-block" contenteditable="true" data-field="recipient">
+          <span class="recipient-line recipient-name">[Hiring Manager Name / Recruitment Team]</span>
+          <span class="recipient-line">[Company Name]</span>
+          <span class="recipient-line">[Department or Team, e.g., Business Operations / Digital Transformation]</span>
+          <span class="recipient-line">[City, Netherlands]</span>
+        </div>
+        <div class="letter-date" contenteditable="true" data-field="date" id="letter-date">
+          November 23, 2026
+        </div>
+      </div>
+
+      <div class="subject-bar" contenteditable="true" data-field="subject">
+        <span class="subject-label">Subject:</span> Application for [Role Title] — [Job Reference / Location]
+      </div>
+
+      <div class="salutation" contenteditable="true" data-field="salutation">
+        Dear [Hiring Manager Name / Hiring Team],
+      </div>
+
+      <div class="letter-paragraphs" contenteditable="true" data-field="body">
+        <p>
+          I am writing to express my interest in the <strong>[Role Title]</strong> position at <strong>[Company Name]</strong>. With an MSc in Digital Business from the University of Amsterdam, an MSc in IT Management, and experience spanning business analysis, process mapping, and system workflow design, I help organizations turn operational complexity into clear requirements, reliable processes, and practical AI-enabled solutions.
+        </p>
+        <p>
+          In my recent independent consulting work at <strong>Pulse Pilates</strong>, I evaluated booking-system vendors and planned and staged the studio's platform migration—covering customer communication, operational continuity, and risk mitigation through completion—while also contributing requirements and workflow analysis for new in-studio business initiatives. Earlier at <strong>Sarshenas Consulting Services</strong>, I analyzed cross-functional client processes and built KPI reporting frameworks to surface operational bottlenecks and support decision-making.
+        </p>
+        <p>
+          Alongside business analysis, I design structured human-in-the-loop workflows. Through my portfolio project <strong>BuildRelay</strong>, I designed an end-to-end multi-agent workflow that converts natural-language specifications into validated deliverables with persistent context, SQLite logging, and explicit human review gates—complemented by hands-on foundations in SQL, Python, and Power BI data modeling.
+        </p>
+      </div>
+
+      <div class="alignment-box" contenteditable="true" data-field="alignment">
+        <div class="alignment-heading">Role Alignment Highlights</div>
+        <ul class="alignment-list">
+          <li><strong>Business &amp; Process Analysis:</strong> [Tailor 1 sentence connecting your requirements/migration experience to a priority in the job posting.]</li>
+          <li><strong>Data &amp; Systems Judgment:</strong> [Tailor 1 sentence connecting SQL/Python/Power BI or human-in-the-loop workflow design to the team's stack or challenges.]</li>
+          <li><strong>Netherlands Readiness:</strong> Graduate of the University of Amsterdam (MSc Digital Business, Talent Fund Scholar); eligible for the Dutch Orientation Year (<em>zoekjaar</em>) residence permit and ready to relocate for the role.</li>
+        </ul>
+      </div>
+
+      <div class="letter-paragraphs" contenteditable="true" data-field="closing-paragraph">
+        <p>
+          I would welcome the opportunity to discuss how my background in business analysis, systems design, and practical AI workflow implementation can contribute to <strong>[Company Name]</strong>. Thank you for your time and consideration.
+        </p>
+      </div>
+
+      <div class="closing-block">
+        <div class="closing-phrase" contenteditable="true" data-field="closing-phrase">Sincerely,</div>
+        <div class="signature-name">Ehsan Negahdar</div>
+        <div class="signature-meta">
+          Portfolio: https://dutch-panda.github.io/ · Email: en.mirror@gmail.com
+        </div>
+      </div>
+
+      <div class="letter-footer">
+        <span>EHSAN NEGAHDAR // COVER LETTER</span>
+        <span>ENCLOSURE: CURRICULUM VITAE</span>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    (function () {
+      const STORAGE_KEY = 'ehsan_cover_letter_draft_v1';
+      const editableNodes = Array.from(document.querySelectorAll('[data-field]'));
+      const defaults = {};
+
+      editableNodes.forEach((el) => {
+        defaults[el.getAttribute('data-field')] = el.innerHTML;
+      });
+
+      const dateEl = document.getElementById('letter-date');
+      if (dateEl) {
+        const today = new Date();
+        const formatted = today.toLocaleDateString('en-US', {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric',
+        });
+        defaults.date = formatted;
+        dateEl.textContent = formatted;
+      }
+
+      try {
+        const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || 'null');
+        if (saved && typeof saved === 'object') {
+          editableNodes.forEach((el) => {
+            const key = el.getAttribute('data-field');
+            if (typeof saved[key] === 'string') {
+              el.innerHTML = saved[key];
+            }
+          });
+        }
+      } catch (_) {}
+
+      function saveDraft() {
+        try {
+          const payload = {};
+          editableNodes.forEach((el) => {
+            payload[el.getAttribute('data-field')] = el.innerHTML;
+          });
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(payload));
+        } catch (_) {}
+      }
+
+      editableNodes.forEach((el) => {
+        el.addEventListener('input', saveDraft);
+      });
+
+      const resetBtn = document.getElementById('reset-template-btn');
+      if (resetBtn) {
+        resetBtn.addEventListener('click', () => {
+          editableNodes.forEach((el) => {
+            const key = el.getAttribute('data-field');
+            if (defaults[key] !== undefined) {
+              el.innerHTML = defaults[key];
+            }
+          });
+          try {
+            localStorage.removeItem(STORAGE_KEY);
+          } catch (_) {}
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
