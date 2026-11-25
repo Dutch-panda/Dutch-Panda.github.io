@@ -3,6 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      (function () {
+        var path = window.location.pathname;
+        if (/^\/portfolio-website(\/|$)/i.test(path)) {
+          var targetPath = path.replace(/^\/portfolio-website/i, '') || '/';
+          window.location.replace(targetPath + window.location.search + window.location.hash);
+        }
+      })();
+    </script>
     <title>404 — Node Not Found — Ehsan Negahdar</title>
     <meta
       name="description"
@@ -10,14 +19,14 @@
     />
     <meta name="author" content="Ehsan Negahdar" />
     <meta name="theme-color" content="#0b0b0d" />
-    <link rel="icon" type="image/svg+xml" href="./assets/logo-git-e.svg" />
+    <link rel="icon" type="image/svg+xml" href="/assets/logo-git-e.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./styles/main.css" />
+    <link rel="stylesheet" href="/styles/main.css" />
   </head>
   <body data-page="404">
     <!-- Accessibility Skip to Main Content Link -->
@@ -35,13 +44,13 @@
     <header class="site-header">
       <div class="header-inner">
         <a
-          href="./index.html"
+          href="/"
           class="brand-logo-btn"
           aria-label="Home — Ehsan Negahdar"
           title="Back to Home"
         >
           <img
-            src="./assets/logo-git-e.svg"
+            src="/assets/logo-git-e.svg"
             alt="Monochrome Git-Branch E Logo"
             class="brand-logo-svg"
           />
@@ -61,9 +70,9 @@
         </button>
 
         <nav class="header-nav" id="site-header-nav" aria-label="Primary Navigation">
-          <a href="./projects.html" class="nav-link">Projects</a>
-          <a href="./cv.html" class="nav-link">CV</a>
-          <a href="./blog.html" class="nav-link">Blog</a>
+          <a href="/projects.html" class="nav-link">Projects</a>
+          <a href="/cv.html" class="nav-link">CV</a>
+          <a href="/blog.html" class="nav-link">Blog</a>
           <a
             href="https://github.com/Dutch-panda"
             target="_blank"
@@ -80,7 +89,7 @@
           >
             LinkedIn ↗
           </a>
-          <a href="./index.html" class="availability-pill" title="Send a direct note">
+          <a href="/" class="availability-pill" title="Back to Home">
             <span class="status-dot" aria-hidden="true"></span>
             <span>Available</span>
           </a>
@@ -109,13 +118,13 @@
         </p>
 
         <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 12px;">
-          <a href="./index.html" class="stage-step-btn cta-link-btn">
+          <a href="/" class="stage-step-btn cta-link-btn">
             ← Return to Overview
           </a>
-          <a href="./projects.html" class="stage-step-btn">
+          <a href="/projects.html" class="stage-step-btn">
             Open Projects Archive ──▶
           </a>
-          <a href="./cv.html" class="stage-step-btn">
+          <a href="/cv.html" class="stage-step-btn">
             View CV ↗
           </a>
         </div>
@@ -139,8 +148,15 @@
         </div>
 
         <div class="footer-right">
-          <span class="status-dot" aria-hidden="true"></span>
-          <span>System status: <strong class="status-clean">Clean</strong></span>
+          <a
+            href="/assets/Ehsan-Negahdar-CV.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="footer-contact-trigger"
+          >
+            CV PDF ↗
+          </a>
+          <span class="footer-sep">|</span>
           <button type="button" class="footer-contact-trigger" data-copy-email>
             Direct contact
           </button>
@@ -151,7 +167,7 @@
     <!-- Toast Banner -->
     <div id="toast-banner" class="toast-banner" role="status" aria-live="polite"></div>
 
-    <script src="./scripts/data.js"></script>
-    <script src="./scripts/app.js"></script>
+    <script src="/scripts/data.js"></script>
+    <script src="/scripts/app.js"></script>
   </body>
 </html>
